@@ -1,0 +1,254 @@
+<html>
+
+<head>
+    <style>
+        .demo {
+            color: red;
+        }
+
+        .green {
+            background-color: green;
+            cursor: pointer;
+        }
+
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: red;
+        }
+
+        #animate2 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: blue;
+        }
+
+        #animate3 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top">
+        <h1 id="heading"></h1>
+        <h2 id="not-yet">Fun</h2>
+        <h2 id="clock"></h2>
+        <button onclick="clearInterval(myStopper)">Stop time</button><br><br>
+        <button id="myButton">Button</button><br><br>
+        <button id="moveButton">Move Them</button><br><br>
+        <div id="container">
+            <div id="animate">1</div>
+            <div id="animate2">2</div>
+            <div id="animate3">3</div>
+        </div>
+        <p onclick="this.innerHTML = 'Ooooops!'">Don't click</p>
+        <p onclick="changeText(this)">Don't click</p>
+        <p onmouseover="this.innerHTML = 'Over'" onmouseout="this.innerHTML = 'Out'">Mouseover</p>
+        <p onmousedown="this.innerHTML = 'Clicked'" onmouseup="this.innerHTML = 'Off'">Mousedown</p>
+        <p id="replace">End of Top</p>
+    </div><hr>
+
+    <div id="myForm">
+        <h2 class="demo">Javascript Validation</h2>
+        <input type="button" value="Hide instructions" onclick="document.getElementById('p1').style.visibility='hidden'">
+        <input type="button" value="Show instructions" onclick="document.getElementById('p1').style.visibility='visible'">
+        <p id="p1">Please input a number between 1 and 10:</p>
+        <input disabled><br><br>
+        <input id="number">
+        <button type="button" onclick="buttonFunction()">Submit</button>
+        <p id="result"></p>
+    </div><hr>
+
+    <div id="bottom">
+        <p id="demo"></p>
+        <p class="more"></p>
+        <a id="my-link" href="https://apple.com">Link</a><br><br>
+        <button type="button" onclick="document.getElementById('more').style.color = 'red'">Make Red</button><br>
+        <h3 class="more" id="more">Thanks for coming!</h3>
+        <p id="bye">Bye!</p>
+        <p id="window-switcher">Window Switcher</p>
+    </div><hr>
+
+    <script>
+        document.getElementById("heading").innerHTML = "Let's See ...";
+        document.getElementById("demo").innerHTML = "Big Test";
+        
+        let paragraphs = document.getElementsByTagName("p");
+        console.log(paragraphs);
+        
+        let more = document.getElementsByClassName("more");
+        console.log(more);
+        
+        document.getElementById("not-yet").classList.add("demo");
+
+        const my_link = document.getElementById("my-link");
+        my_link.href = "https://microsoft.com";
+        my_link.style.fontSize = "40px";
+        my_link.setAttribute("href", "https://anthropic.com")
+
+        let final = document.createElement("p");
+        final.innerHTML = "Is this actually goodbye?";
+        document.body.appendChild(final);
+
+        let remove = document.getElementById("bye");
+        document.getElementById("bottom").removeChild(remove);
+
+        let another_final = document.createElement("p");
+        another_final.innerHTML = "Ya, okay ...";
+        document.getElementById("bottom").appendChild(another_final);
+
+        let old_p = document.getElementById("replace");
+        let new_p = document.createElement("p");
+        new_p.innerHTML = "Here's the new look";
+        document.getElementById("top").replaceChild(new_p, old_p);
+
+        document.write("HAHAHAHA")
+
+        document.getElementById("myButton").onclick = function() {
+            alert("Button activated (6x)")
+            document.getElementById("myButton").classList.toggle("green");
+
+            let buttonDiv = document.createElement("div");
+
+            for (let i = 0; i < 6; i++) {
+                let newLine = document.createElement("p");
+                newLine.innerHTML = "BUTTON";
+                newLine.style.color = "green";
+                buttonDiv.appendChild(newLine);
+            }
+
+            document.body.appendChild(buttonDiv);
+        }
+
+        console.log(document.URL);
+
+        const p = document.querySelectorAll("p");
+        for (x of p) {
+            x.style.color = "green";
+        }
+
+        document.getElementById("not-yet").innerHTML = "Date : " + Date();
+
+        function buttonFunction() {
+            let x = document.getElementById("number").value;
+            let text;
+            if (isNaN(x) || x < 1 || x > 10) {
+                text = "Input not valid";
+            } else {
+                text = "Input OK";
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        document.getElementById("not-yet").style.border = "2px solid lightgrey";
+
+        for (let paragraph of paragraphs) {
+            paragraph.style.border = "2px solid lightgrey";
+        }
+
+        document.getElementById("moveButton").addEventListener("click", () => {
+            moveDiagonal();
+            moveHorizontal();
+            moveVertical();
+        });
+
+        let diagId = null;
+        function moveDiagonal() {
+            const elem = document.getElementById("animate");
+            let pos = 0;
+            clearInterval(diagId);
+            diagId = setInterval(frame, 5);
+            function frame() {
+                if (pos == 350) {
+                    clearInterval(diagId);
+                } else {
+                    pos++;
+                    elem.style.top = pos + "px";
+                    elem.style.left = pos + "px";
+                }
+            }
+        }
+
+        let horizId = null;
+        function moveHorizontal() {
+            const elem = document.getElementById("animate2");
+            let pos = 0;
+            clearInterval(horizId);
+            horizId = setInterval(frame, 5);
+            function frame() {
+                if (pos == 350) {
+                    clearInterval(horizId);
+                } else {
+                    pos++;
+                    elem.style.left = pos + "px";
+                }
+            }
+        }
+
+        let vertId = null;
+        function moveVertical() {
+            const elem = document.getElementById("animate3");
+            let pos = 0;
+            clearInterval(vertId);
+            vertId = setInterval(frame, 5);
+            function frame() {
+                if (pos == 350) {
+                    clearInterval(vertId);
+                } else {
+                    pos++;
+                    elem.style.top = pos + "px";
+                }
+            }
+        }
+
+        function changeText(id) {
+            id.innerHTML = "Ooops!";
+        }
+
+        document.getElementById("heading").addEventListener("click", function(){ alert("Hello World!"); });
+
+        document.getElementById("more").addEventListener("click", myFunction);
+        // "mouseover", "mouseout"
+
+        function myFunction() {
+            alert ("Hello World Again!");
+        }
+
+        window.addEventListener("resize", function(){
+            document.getElementById("window-switcher").innerHTML = "Moved the window";
+        });
+
+        const paras = document.getElementsByTagName("p");
+        for (let i = 0; i < paras.length; i++) {
+            paras[i].style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+        }
+
+        const myNodeList = document.querySelectorAll("p");
+        console.log(myNodeList[1]);
+
+        let myStopper = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            const d = new Date();
+            document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+        }
+
+        localStorage.setItem("name", "John Doe");
+        console.log(localStorage.getItem("name"))
+    </script>
+</body>
+
+</html>

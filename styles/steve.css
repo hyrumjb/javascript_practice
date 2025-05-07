@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid blue;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.item {
+    height: 50px;
+    width: 50px;
+    background-color: hotpink;
+    position: absolute;
+    top: 0;
+}
+
+#control-center {
+    background-color: grey;
+    width: 100vw;
+    min-height: 10vh;
+    padding: 40px 0;
+}
+
+#controls h1,
+#controls h2 {
+    margin: 0;
+}
+
+#controls {
+    max-width: 70vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#real-body {
+    max-width: 70vw;
+    margin: 40px auto;
+    font-family: "Lato", Arial, sans-serif;
+    color: rgb(5, 5, 5);
+}
+
+header {
+    text-align: center;
+}
+
+h1, 
+h2,
+footer {
+    font-family: "Libre Baskerville", "Alegreya", "Times New Roman", serif;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+img {
+    border-radius: 50px;
+    max-width: 80%;
+}
+
+.mini {
+    width: 50%;
+    height: 8px;
+    border: none;
+    padding: none;
+    background-color: rgb(200, 200, 150);
+    margin: 2em auto;
+    border-radius: 5px;
+}
+
+.biggie {
+    height: 8px;
+    width: 90%;
+    border: none;
+    padding: none;
+    background-color: rgb(200, 200, 150);
+    margin-top: 2em;
+    border-radius: 5px;
+}
+
+p,
+ul,
+li {
+    line-height: 1.4;
+    word-spacing: 0.2em;
+}
+
+nav a {
+    display: inline-block;
+    border: hidden;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(200, 200, 150);
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background-color: black;
+    color: white;
+}
+
+footer {
+    margin: 0 50px 0;
+}
+
+nav {
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 0.6em;
+}
+
+a {
+    color: rgb(150, 150, 112.5)
+}
+
+sup {
+    font-size: 0.75em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+b {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#leftie {
+    float: left;
+}
+
+#rightie {
+    float: right;
+}
